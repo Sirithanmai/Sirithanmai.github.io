@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Timer</title>
+	<style>
+		body {
+			background-image: url(timepic.jpg);
+			background-repeat: no-repeat;
+		    background-size: cover;
+		    text-align: right;
+		    margin-right: 200px;
+		    margin-top: 200px;
+		}
+		h1{
+			font-family: serif;
+			font-size: 8em;
+			color: grey;
+		}
+		button{
+			font-style: sans-serif;
+		}
+	</style>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	     var timerValue;
+	     var timer;
+	     var minutes;
+	     var seconds;
+	     defaultValue = 5;
+	     var t=1000;
+	     function defaultTimer() {
+			clearInterval(timer);
+			document.getElementById("timerbox").hidden= false;
+			
+            
+             seconds = Math.floor(5*60);
+             timer = setInterval(runTimer,t);
+		}
+		function startTimer() {
+			clearInterval(timer);
+			timerValue = parseInt(document.getElementById("startValue").value);
+			document.getElementById("timerbox").hidden= false;
+			
+             
+             seconds = Math.floor(timerValue*60);
+             timer = setInterval(runTimer, t);
+		}
+		function runTimer() {
+
+			document.getElementById("timerbox").innerHTML =""+ Math.floor(seconds/60) + ":"+ Math.floor(seconds%60) ;
+			
+			if(seconds == 0) {
+				clearInterval(timer);
+		        alert("Time's up!!");
+		     }
+		     else{
+		     	seconds--;
+		     }
+		}
+	</script>
+
+
+</head>
+<body>
+     <h1 id="timerbox">0:00</h1>
+     <br>
+     <button onclick="defaultTimer()">DEFAULT START</button>
+     <br>
+     <br>
+     <input id="startValue">
+     <button onclick="startTimer()" >START</button>
+     <button onclick="startTimer()" >RESTART</button>
+    
+</body>
+</html>
+
+	
